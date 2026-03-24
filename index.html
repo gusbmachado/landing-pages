@@ -1,62 +1,404 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Projetos Comunitários — Extensão Universitária</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="assets/css/index.css"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Bene Vita — Campanha: Parceiras do bem MANÁ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/styles/style.css"/>
 </head>
 <body>
-<div class="page">
-  <div class="index-header">
-    <p>Extensão Universitária · Faculdade de Medicina</p>
-    <h1>Projetos Comunitários<span>com identidade, impacto e propósito</span></h1>
-  </div>
-  <div class="grid">
-    <a href="page1.html" class="proj-card p1" aria-disabled="true">
-      <div class="proj-card-inner">
-        <div class="proj-num">01</div>
-        <img src="assets/images/logo-1.png" alt="" class="proj-logo"/>
-        <h2>Extensão que Alimenta</h2>
-        <p>Uma proposta editorial calorosa e confiável para conectar extensão universitária, alimentação digna e cuidado contínuo.</p>
-        <div class="proj-tags"><span class="ptag">Verde</span><span class="ptag">Orgânico</span><span class="ptag">Humanista</span></div>
-        <div class="proj-cta">Ver landing page →</div>
-      </div>
+    <!-- NAV -->
+    <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+        <img id="nav-logo-img" src="" alt="Bene Vita"/>
+        Bene Vita
     </a>
-    <a href="page2.html" class="proj-card p2" aria-disabled="true">
-      <div class="proj-card-inner">
-        <div class="proj-num">02</div>
-        <img src="assets/images/logo-2.png" alt="" class="proj-logo"/>
-        <h2>Saúde na Mesa</h2>
-        <p>Uma narrativa clara e contemporânea para apresentar cuidado preventivo, nutrição comunitária e confiança institucional.</p>
-        <div class="proj-tags"><span class="ptag">Ciano</span><span class="ptag">Saúde</span><span class="ptag">Moderno</span></div>
-        <div class="proj-cta">Ver landing page →</div>
-      </div>
-    </a>
-    <a href="page3.html" class="proj-card p3" aria-disabled="true">
-      <div class="proj-card-inner">
-        <div class="proj-num">03</div>
-        <img src="assets/images/logo-3.png" alt="" class="proj-logo"/>
-        <h2>Langar</h2>
-        <p>Uma presença visual acolhedora que traduz tradição, serviço comunitário e partilha com grande força simbólica.</p>
-        <div class="proj-tags"><span class="ptag">Terracota</span><span class="ptag">Tradição</span><span class="ptag">Partilha</span></div>
-        <div class="proj-cta">Ver landing page →</div>
-      </div>
-    </a>
-    <a href="page4.html" class="proj-card p4" aria-disabled="true">
-      <div class="proj-card-inner">
-        <div class="proj-num">04</div>
-        <img src="assets/images/logo-4.png" alt="" class="proj-logo"/>
-        <h2>Shared Meal</h2>
-        <p>Uma direção de arte inclusiva e urbana para comunicar pertencimento, mobilização coletiva e impacto social real.</p>
-        <div class="proj-tags"><span class="ptag">Magenta</span><span class="ptag">Inclusivo</span><span class="ptag">Social</span></div>
-        <div class="proj-cta">Ver landing page →</div>
-      </div>
-    </a>
-  </div>
-  <p class="index-footer">Faculdade de Medicina · Landing pages de extensão universitária com foco em clareza, confiança e mobilização</p>
-</div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#campanha">A Campanha</a></li>
+        <li><a href="#grupo">Sobre nós</a></li>
+        <li><a href="#manifesto">Manifesto</a></li>
+        <li><a href="#impacto">Impacto</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="#como" class="nav-cta">❤ Doar agora</a></li>
+    </ul>
+    <button class="ham" id="hamburger" aria-label="Menu" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- DONATE MODAL -->
+    <div class="modal-overlay" id="donateModal">
+    <div class="modal" style="position:relative">
+        <button class="modal-close" onclick="closeModal()" aria-label="Fechar modal">✕</button>
+        <div style="text-align:center;margin-bottom:1.25rem">
+        <img id="modal-logo" src="" alt="Bene Vita" style="width:52px;height:52px;object-fit:contain;margin:0 auto .75rem;border-radius:50%;background:var(--cp);padding:5px;display:block"/>
+        <div class="modal-title">Apoiar a Cozinha Comunitária MANÁ</div>
+        <div class="modal-sub">Escolha o valor da sua doação</div>
+        </div>
+        <div class="amount-grid">
+        <button type="button" class="amount-btn" onclick="selectAmt(this,'20')"><sup style="font-size:.7rem">R$</sup>20</button>
+        <button type="button" class="amount-btn" onclick="selectAmt(this,'50')"><sup style="font-size:.7rem">R$</sup>50</button>
+        <button type="button" class="amount-btn active" onclick="selectAmt(this,'100')"><sup style="font-size:.7rem">R$</sup>100</button>
+        <button type="button" class="amount-btn" onclick="selectAmt(this,'200')"><sup style="font-size:.7rem">R$</sup>200</button>
+        <button type="button" class="amount-btn" onclick="selectAmt(this,'300')"><sup style="font-size:.7rem">R$</sup>300</button>
+        <button type="button" class="amount-btn" onclick="selectAmt(this,'500')"><sup style="font-size:.7rem">R$</sup>500</button>
+        </div>
+        <input class="custom-amt" type="number" placeholder="Outro valor (R$)" id="customAmt"/>
+        <div class="modal-info">
+        🔒 Você será redirecionado à plataforma de pagamento seguro. 100% do valor será revertido em insumos (cestas básicas) para a Cozinha Comunitária Parceiras do bem MANÁ.
+        </div>
+        <button class="modal-donate" onclick="confirmDonate()">Continuar para doação →</button>
+    </div>
+    </div>
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+    <div class="hero-shape"></div>
+    <div class="hero-g"></div>
+    <div class="wrap">
+        <div class="hero-in">
+        <div>
+            <div class="hero-eyebrow r">Bene Vita · Extensão Universitária · Faculdade de Medicina de Uberlândia (FAMEU)</div>
+            <h1 class="hero-h1 r d1">Uma cozinha.<br>Uma campanha.<br><em>Um impacto real.</em></h1>
+            <p class="hero-sub r d2">Somos alunos de graduação extensionistas da FAMEU. Nesta ação, arrecadamos recursos para apoiar diretamente a <strong>Parceiras do bem MANÁ</strong>, fortalecendo a segurança alimentar no Assentamento Maná.</p>
+            <div class="hero-btns r d3">
+            <button class="btn bc" onclick="openModal()">❤ Apoiar a campanha</button>
+            <a href="#campanha" class="btn bg">Conhecer a causa</a>
+            </div>
+            <div class="hero-trust r d4">
+            <div class="trust-i"><div class="trust-dot"></div>100% transparente</div>
+            <div class="trust-i"><div class="trust-dot"></div>Supervisão médica</div>
+            <div class="trust-i"><div class="trust-dot"></div>Extensão universitária</div>
+            <div class="trust-i"><div class="trust-dot"></div>Meta: R$ 2.000</div>
+            </div>
+        </div>
+        <div style="position:relative">
+            <div class="hc-back"></div>
+            <div class="hero-card r rr d2">
+            <img id="hero-card-logo" src="" alt="Bene Vita" class="hc-logo"/>
+            <div class="hc-title">Campanha: Parceiras do bem MANÁ</div>
+            <div class="hc-sub">Meta: R$ 2.000 · Insumos (cestas básicas)</div>
+            <div class="progress-wrap">
+                <div class="progress-labels">
+                <div class="pl-raised">R$ 0</div>
+                <div class="pl-goal">de R$ 2.000</div>
+                </div>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+                <div class="progress-info"><span>Meta em andamento</span><span>Contribuições abertas</span></div>
+            </div>
+            <div class="hc-stats">
+                <div class="hcs"><div class="hcs-n">0</div><div class="hcs-l">Apoiadores</div></div>
+                <div class="hcs"><div class="hcs-n">R$ 2.000</div><div class="hcs-l">Meta total</div></div>
+                <div class="hcs"><div class="hcs-n">FAMEU</div><div class="hcs-l">Extensão</div></div>
+            </div>
+            <button class="hc-donate" onclick="openModal()">Fazer minha doação →</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ── A CAMPANHA ── -->
+    <section id="campanha" class="sec">
+    <div class="wrap">
+        <div class="camp-in">
+        <div class="camp-visual r rl">
+            <div class="camp-circle">
+            <img id="camp-logo" src="" alt="Bene Vita" class="camp-logo"/>
+            </div>
+            <div class="camp-ring"></div>
+            <div class="camp-float cf1">🍲 Parceiras do bem MANÁ</div>
+            <div class="camp-float cf2">📍 Assentamento Maná</div>
+        </div>
+        <div>
+            <span class="tag r">🍽️ A Campanha</span>
+            <h2 class="h2 r d1">Conhecendo a <em>Parceiras do bem MANÁ</em></h2>
+            <div class="sep r d1"></div>
+            <p class="body r d2">A <strong>Parceiras do bem MANÁ</strong> atua no Assentamento Maná, em Uberlândia/MG, mobilizando cidadãos, empresas e instituições públicas e privadas em projetos de segurança alimentar e educação.</p>
+            <p class="body r d2">Nesta campanha, a colaboração da FAMEU tem objetivo claro: arrecadar <strong>R$ 2.000,00</strong>, valor integralmente revertido em <strong>insumos (cestas básicas)</strong> para as famílias atendidas.</p>
+            <div class="camp-facts r d3">
+            <div class="cfact"><div class="cfact-icon">🏠</div><div><strong>Assentamento Maná, Uberlândia/MG</strong><span>A cozinha funciona na casa da Tia Cida, construída em mutirão com doações de materiais de construção.</span></div></div>
+            <div class="cfact"><div class="cfact-icon">👨‍👩‍👧‍👦</div><div><strong>Atendimento em larga escala</strong><span>Aproximadamente 350 pessoas são atendidas diretamente, em um território com cerca de 2.500 moradores.</span></div></div>
+            <div class="cfact"><div class="cfact-icon">🆘</div><div><strong>Urgência social</strong><span>Desemprego, fome e impactos da pandemia ampliam a demanda por alimentação e acolhimento comunitário.</span></div></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ── BENE VITA ── -->
+    <section id="grupo" class="sec" style="background:var(--w)">
+    <div class="wrap">
+        <div class="grupo-in">
+        <div class="r rl">
+            <span class="tag">Quem somos</span>
+            <h2 class="h2">Bene Vita + FAMEU —<br><em>extensão com impacto social</em></h2>
+            <div class="sep"></div>
+            <p class="body">Somos voluntários: alunos de graduação extensionistas da Faculdade de Medicina de Uberlândia (FAMEU), atuando para que saúde e alimentação caminhem juntas no território.</p>
+            <p class="body"><em>Bene Vita</em> é nosso compromisso com a vida digna: conectar universidade e comunidade para fortalecer ações de segurança alimentar com transparência e corresponsabilidade.</p>
+            <div class="grupo-manifesto">
+            <div class="gm-quote">"Cuidar de quem alimenta a comunidade é cuidar da comunidade inteira."</div>
+            <div class="gm-src">— Extensão FAMEU, 2026</div>
+            </div>
+            
+        <div class="grupo-manifesto" style="margin-top:1rem">
+            <div class="gm-quote">"As sete Cozinhas Comunitárias de Uberlândia atendem aproximadamente 4 mil pessoas com apoio contínuo de doações e trabalho voluntário."</div>
+            <div class="gm-src">— Rede de Apoio às Cozinhas Comunitárias</div>
+            <p class="body" style="margin-top:.8rem;margin-bottom:0">A experiência das cozinhas comunitárias iniciadas na pandemia mostrou a força da solidariedade local: doações de ONGs, agricultores familiares do MST, servidores públicos e sociedade civil sustentam a alimentação diária e o acolhimento de famílias em vulnerabilidade.</p>
+        </div>
+            <ul class="grupo-list" style="margin-top:1.5rem">
+            <li>Ação extensionista da Faculdade de Medicina de Uberlândia (FAMEU)</li>
+            <li>Voluntários: alunos de graduação extensionistas</li>
+            <li>Parceria com a Cozinha Comunitária Parceiras do bem MANÁ</li>
+            <li>Transparência total na destinação dos recursos</li>
+            <li>Arrecadação com destinação integral para cestas básicas</li>
+            </ul>
+        </div>
+        <div class="grupo-cards r rr">
+            <div class="gc"><div class="gc-icon">🩺</div><h4>Saúde preventiva</h4><p>Orientações e triagem básica durante as atividades comunitárias.</p></div>
+            <div class="gc"><div class="gc-icon">🌱</div><h4>Nutrição comunitária</h4><p>Educação alimentar adaptada à realidade das famílias atendidas.</p></div>
+            <div class="gc"><div class="gc-icon">📚</div><h4>Extensão acadêmica</h4><p>Conhecimento universitário a serviço de quem mais precisa.</p></div>
+            <div class="gc"><div class="gc-icon">🤝</div><h4>Voluntariado ativo</h4><p>Estudantes presentes nas cozinhas, lado a lado com as comunidades.</p></div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section id="manifesto" class="sec">
+    <div class="wrap">
+        <div class="manifesto-in">
+        <span class="tag manifesto-tag r">✦ Manifesto</span>
+        <h2 class="manifesto-title r d1">Alimentar é o ato de saúde<br>mais <em>fundamental</em> que existe.</h2>
+        <p class="manifesto-body r d2">Acreditamos que a saúde pública começa na mesa. Não existe sistema de saúde eficaz sem segurança alimentar. Não existe comunidade saudável com fome. E não existe estudante de medicina comprometido que ignora isso.</p>
+        <div class="manifesto-trio">
+            <div class="mt-card r d1"><div class="mt-icon">🌊</div><h3>Saúde começa na mesa</h3><p>Alimentação adequada é prevenção primária. Apoiar cozinhas comunitárias é medicina preventiva.</p></div>
+            <div class="mt-card r d2"><div class="mt-icon">🤲</div><h3>Solidariedade em rede</h3><p>Cozinhas comunitárias são infraestrutura social essencial. Sustentá-las é investimento coletivo.</p></div>
+            <div class="mt-card r d3"><div class="mt-icon">🔬</div><h3>Academia com propósito</h3><p>O conhecimento médico só tem valor real quando transforma vidas concretas e alcança quem precisa.</p></div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ── BENEFICIÁRIO ── -->
+    <section id="beneficiario" class="sec">
+    <div class="wrap">
+        <div class="benef-in">
+        <div class="r rl" style="position:relative">
+            <div class="benef-img-wrap">
+            <!-- Kitchen SVG Illustration -->
+            <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" class="kitchen-illustration">
+                <!-- Background -->
+                <rect x="0" y="0" width="320" height="240" fill="none"/>
+                <!-- Table -->
+                <rect x="40" y="150" width="240" height="16" rx="4" fill="#B2EBF2"/>
+                <rect x="50" y="166" width="12" height="50" rx="3" fill="#80DEEA"/>
+                <rect x="258" y="166" width="12" height="50" rx="3" fill="#80DEEA"/>
+                <!-- Big pot -->
+                <ellipse cx="160" cy="148" rx="50" ry="10" fill="#006064"/>
+                <rect x="110" y="100" width="100" height="50" rx="6" fill="#00ACC1"/>
+                <ellipse cx="160" cy="100" rx="50" ry="10" fill="#0097A7"/>
+                <!-- Steam -->
+                <path d="M140 85 Q145 72 140 60" stroke="#80DEEA" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+                <path d="M160 80 Q165 67 160 55" stroke="#80DEEA" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+                <path d="M180 85 Q185 72 180 60" stroke="#80DEEA" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+                <!-- Ladle -->
+                <line x1="195" y1="95" x2="230" y2="68" stroke="#004D5E" stroke-width="4" stroke-linecap="round"/>
+                <ellipse cx="195" cy="98" rx="12" ry="8" fill="#004D5E"/>
+                <!-- Bowls -->
+                <ellipse cx="90" cy="152" rx="22" ry="7" fill="#E0F7FA"/>
+                <path d="M68 148 Q90 162 112 148" fill="#B2EBF2"/>
+                <ellipse cx="230" cy="152" rx="22" ry="7" fill="#E0F7FA"/>
+                <path d="M208 148 Q230 162 252 148" fill="#B2EBF2"/>
+                <!-- People silhouettes -->
+                <circle cx="60" cy="128" r="12" fill="#00ACC1" opacity=".5"/>
+                <rect x="50" y="140" width="20" height="12" rx="4" fill="#00ACC1" opacity=".4"/>
+                <circle cx="260" cy="128" r="12" fill="#0097A7" opacity=".5"/>
+                <rect x="250" y="140" width="20" height="12" rx="4" fill="#0097A7" opacity=".4"/>
+                <circle cx="160" cy="55" r="0" fill="none"/>
+                <!-- Heart -->
+                <path d="M155 38 C155 34, 150 30, 146 33 C142 36, 142 41, 155 48 C168 41, 168 36, 164 33 C160 30, 155 34, 155 38Z" fill="#00ACC1" opacity=".6"/>
+            </svg>
+            </div>
+            <div class="benef-badge">
+            <div class="bb-n">350</div>
+            <div class="bb-l">pessoas atendidas</div>
+            </div>
+        </div>
+        <div>
+            <span class="tag r">🏠 A Beneficiária</span>
+            <h2 class="h2 r d1">Parceiras do bem MANÁ —<br><em>Cozinha Comunitária Beneficiária</em></h2>
+            <div class="sep r d1"></div>
+            <p class="body r d2">A Cozinha Comunitária do Maná funciona na casa da Tia Cida, no Assentamento Maná, em Uberlândia/MG. O espaço foi construído em mutirão e hoje acolhe famílias em situação de vulnerabilidade alimentar e social.</p>
+            <p class="body r d2">Os recursos desta campanha serão destinados integralmente à compra e distribuição de cestas básicas:</p>
+            <p class="body r d2" style="font-size:.82rem">
+            Referências: <a href="https://web.facebook.com/p/Parceiras-do-bem-MAN%C3%81-100064921023008" target="_blank" rel="noopener noreferrer">Facebook Parceiras do bem MANÁ</a> · <a href="https://ifz.org.br/cozinhas-comunitarias/" target="_blank" rel="noopener noreferrer">Instituto IFZ — Cozinhas Comunitárias</a>
+            </p>
+            <div class="benef-needs r d3">
+            <div class="need-item"><div class="ni-icon">🧺</div><div class="ni-label">Cestas básicas para famílias do assentamento</div><div class="ni-amt">R$ 1.200</div></div>
+            <div class="need-item"><div class="ni-icon">🛒</div><div class="ni-label">Insumos alimentares para preparo comunitário</div><div class="ni-amt">R$ 500</div></div>
+            <div class="need-item"><div class="ni-icon">🧴</div><div class="ni-label">Itens de higiene para manipulação segura de alimentos</div><div class="ni-amt">R$ 200</div></div>
+            <div class="need-item"><div class="ni-icon">🚚</div><div class="ni-label">Logística e distribuição das cestas básicas</div><div class="ni-amt">R$ 100</div></div>
+            </div>
+            <div class="benef-cta-wrap r d4">
+            <button class="btn bc" onclick="openModal()">❤ Apoiar agora</button>
+            <a href="#impacto" class="btn bg">Ver impacto das doações</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ── IMPACTO ── -->
+    <section id="impacto" class="sec">
+    <div class="wrap">
+        <div class="imp-header r">
+        <span class="tag">Impacto</span>
+        <h2 class="h2">O que sua doação <em>faz</em></h2>
+        <p class="body" style="text-align:center">Cada contribuição fortalece a segurança alimentar de famílias do Assentamento Maná.</p>
+        </div>
+        <div class="imp-grid">
+        <div class="imp-card r d1"><div class="imp-icon">🧺</div><div class="imp-amt"><sup>R$</sup>20</div><h3>Complemento alimentar</h3><p>Ajuda na composição de itens básicos para cestas de famílias cadastradas.</p></div>
+        <div class="imp-card r d2"><div class="imp-icon">📦</div><div class="imp-amt"><sup>R$</sup>50</div><h3>Cesta parcial</h3><p>Contribui para montar cestas com itens essenciais para famílias em maior vulnerabilidade.</p></div>
+        <div class="imp-card r d3"><div class="imp-icon">🍽️</div><div class="imp-amt"><sup>R$</sup>100</div><h3>Insumos comunitários</h3><p>Fortalece a compra de alimentos para preparo e distribuição organizada no território.</p></div>
+        <div class="imp-card r d4"><div class="imp-icon">🤝</div><div class="imp-amt"><sup>R$</sup>300</div><h3>Apoio ampliado</h3><p>Acelera o alcance da meta e amplia o número de cestas básicas entregues às famílias.</p></div>
+        </div>
+        <div class="prog-section r">
+        <div class="prog-header">
+            <div>
+            <h3>Progresso da campanha</h3>
+            <p style="font-size:.8rem;opacity:.75;margin-top:.2rem">Parceiras do bem MANÁ · Meta: R$ 2.000</p>
+            </div>
+            <div class="prog-days">⏰ Campanha ativa</div>
+        </div>
+        <div class="prog-bar-lg"><div class="prog-fill-lg"></div></div>
+        <div class="prog-labels-lg">
+            <span><span class="prog-r">R$ 0</span> arrecadados</span>
+            <span>Contribuições abertas · 0% da meta</span>
+        </div>
+        <div style="margin-top:1.75rem;text-align:center">
+            <button class="btn bw" onclick="openModal()" style="margin:0 auto">Completar a meta — Apoiar agora →</button>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ── TRANSPARÊNCIA ── -->
+    <section id="transparencia" class="sec" style="padding:4rem 0">
+    <div class="wrap">
+        <div class="transp-in">
+        <div class="transp-text r rl">
+            <h2>Transparência total em cada passo</h2>
+            <p>Todos os valores arrecadados serão destinados exclusivamente à compra de insumos (cestas básicas) para a Cozinha Comunitária Parceiras do bem MANÁ, com prestação de contas ao final da campanha.</p>
+        </div>
+        <div class="transp-badges r rr">
+            <div class="tb"><div class="tb-i">📊</div> Relatório público ao final</div>
+            <div class="tb"><div class="tb-i">✅</div> 100% para cestas básicas no Assentamento Maná</div>
+            <div class="tb"><div class="tb-i">🏫</div> Supervisão acadêmica</div>
+            <div class="tb"><div class="tb-i">🧾</div> Comprovantes de destino</div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ── COMO APOIAR ── -->
+    <section id="como" class="sec">
+    <div class="wrap">
+        <div class="como-header r">
+        <span class="tag">Apoiar</span>
+        <h2 class="h2">Escolha como <em>contribuir</em></h2>
+        <p class="body" style="text-align:center">Toda doação, por menor que seja, é revertida integralmente em cestas básicas para a comunidade beneficiada.</p>
+        </div>
+        <div class="plans">
+        <div class="plan soft r d1">
+            <div class="plan-amt"><sup style="font-size:1.1rem">R$</sup>20</div>
+            <div class="plan-period">doação única</div>
+            <div class="plan-name">Apoiador</div>
+            <div class="plan-desc">Contribui para itens essenciais das cestas básicas distribuídas pela Parceiras do bem MANÁ.</div>
+            <button class="btn bg" style="width:100%;justify-content:center" onclick="openModal()">Contribuir R$20</button>
+        </div>
+        <div class="plan featured r d2">
+            <div class="plan-badge">❤ Mais impacto</div>
+            <div class="plan-amt"><sup style="font-size:1.1rem">R$</sup>100</div>
+            <div class="plan-period">doação única</div>
+            <div class="plan-name">Parceiro do MANÁ</div>
+            <div class="plan-desc">Amplia a capacidade de compra de insumos alimentares para as famílias cadastradas.</div>
+            <button class="btn bw" style="width:100%;justify-content:center;color:var(--cd)" onclick="openModal()">Contribuir R$100</button>
+        </div>
+        <div class="plan outline r d3">
+            <div class="plan-amt"><sup style="font-size:1.1rem">R$</sup>300</div>
+            <div class="plan-period">doação única</div>
+            <div class="plan-name">Padrinho do Assentamento</div>
+            <div class="plan-desc">Impulsiona a meta da campanha e acelera a entrega de cestas básicas no território.</div>
+            <button class="btn bc" style="width:100%;justify-content:center" onclick="openModal()">Contribuir R$300</button>
+        </div>
+        </div>
+        <p class="plan-note r">🔒 Pagamento seguro via plataforma certificada · Recibo de doação emitido · 100% para insumos (cestas básicas)</p>
+    </div>
+    </section>
+
+    <!-- ── CONTATO ── -->
+    <section id="contato" class="sec">
+    <div class="wrap">
+        <span class="tag r">📬 Contato</span>
+        <h2 class="h2 r d1">Fale com o <em>Bene Vita + FAMEU</em></h2>
+        <p class="body r d2">Dúvidas sobre a campanha, interesse em voluntariado ou parceria — estamos aqui.</p>
+        <div class="contato-in">
+        <div class="c-info r rl">
+            <div class="ci"><div class="ci-icon">✉️</div><div><strong>E-mail</strong><span>contato@benevita.org.br</span></div></div>
+            <div class="ci"><div class="ci-icon">📸</div><div><strong>Instagram</strong><span>@benevita.med</span></div></div>
+            <div class="ci"><div class="ci-icon">💬</div><div><strong>WhatsApp</strong><span>(34) 9 0000-0000</span></div></div>
+            <div class="ci"><div class="ci-icon">📍</div><div><strong>Localização</strong><span>Faculdade de Medicina de Uberlândia (FAMEU) — Uberlândia/MG</span></div></div>
+            <div style="padding:1.1rem;background:var(--w);border-radius:10px;font-size:.82rem;color:var(--tm);line-height:1.72;border-left:3px solid var(--c)">
+            🩺 <strong>Quer ser voluntário?</strong> Alunos de graduação extensionistas são bem-vindos para fortalecer a rede solidária junto à comunidade do Maná.
+            </div>
+        </div>
+        <div class="c-form r rr">
+            <h3 style="font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;margin-bottom:1.3rem;color:var(--cd)">Enviar mensagem</h3>
+            <div class="frow">
+            <div class="fg"><label>Nome</label><input type="text" placeholder="Seu nome"/></div>
+            <div class="fg"><label>E-mail</label><input type="email" placeholder="seu@email.com"/></div>
+            </div>
+            <div class="fg">
+            <label>Assunto</label>
+            <select>
+                <option value="">Selecione...</option>
+                <option>Dúvida sobre a campanha</option>
+                <option>Quero ser voluntário</option>
+                <option>Proposta de parceria</option>
+                <option>Imprensa / divulgação</option>
+                <option>Outro</option>
+            </select>
+            </div>
+            <div class="fg"><label>Mensagem</label><textarea rows="4" placeholder="Escreva sua mensagem..."></textarea></div>
+            <button class="fsub" onclick="sendForm(this)">Enviar mensagem →</button>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+    <div class="wrap">
+        <div class="fi">
+        <div class="fb">
+            <div class="nav-logo" style="color:rgba(255,255,255,.75)">
+            <img id="footer-logo" src="" alt="" class="fli"/>
+            Bene Vita
+            </div>
+            <p>Grupo de extensão universitária da Faculdade de Medicina de Uberlândia (FAMEU). Saúde começa na mesa, com solidariedade e segurança alimentar.</p>
+        </div>
+        <div class="fc"><h4>Campanha</h4><ul><li><a href="#campanha">A causa</a></li><li><a href="#beneficiario">Beneficiária</a></li><li><a href="#impacto">Impacto</a></li><li><a href="#transparencia">Transparência</a></li></ul></div>
+        <div class="fc"><h4>Grupo</h4><ul><li><a href="#grupo">Quem somos</a></li><li><a href="#manifesto">Manifesto</a></li><li><a href="#contato">Voluntariado</a></li><li><a href="#contato">Parcerias</a></li></ul></div>
+        <div class="fc"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Relatório final</a></li></ul></div>
+        </div>
+        <div class="fbot">
+        <span>© 2026 Bene Vita + FAMEU — Extensão Universitária</span>
+        <span>Campanha: Parceiras do bem MANÁ · Meta R$ 2.000</span>
+        </div>
+    </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
