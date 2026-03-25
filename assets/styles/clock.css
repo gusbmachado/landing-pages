@@ -1,0 +1,35 @@
+.fc-row{display:flex;align-items:center;gap:5px;margin-block:25px;justify-content:center;flex-wrap:wrap}
+.fc-section{display:flex;flex-direction:column;align-items:center;gap:10px}
+.fc-label{font-size:.6rem;text-transform:uppercase;letter-spacing:3px;color:#4a5a6a}
+.separator{font-size:3rem;font-weight:900;color:#20364a;line-height:120px;padding-bottom:20px;user-select:none}
+
+.flip-unit{position:relative;width:108px;height:120px;perspective:320px;filter:drop-shadow(0 6px 18px rgba(10,32,58,.45))}
+.panel{position:absolute;left:0;width:100%;height:60px;overflow:hidden}
+.panel-txt{position:absolute;width:100%;height:120px;display:flex;align-items:center;justify-content:center;font-size:5rem;font-weight:900;letter-spacing:-4px;user-select:none}
+
+/* Nova paleta de background (azul petróleo) */
+.st{top:0;border-radius:10px 10px 0 0;background:linear-gradient(180deg,#3f5870,#2e4256);z-index:1}
+.st .panel-txt{top:0;color:#f0f6ff}
+.sb{bottom:0;border-radius:0 0 10px 10px;background:linear-gradient(180deg,#243749,#1a2a3a);z-index:1}
+.sb .panel-txt{top:-60px;color:#d7e5f5}
+
+.ft{top:0;border-radius:10px 10px 0 0;background:linear-gradient(180deg,#435e78,#2f455b);transform-origin:center bottom;z-index:3}
+.ft .panel-txt{top:0;color:#f0f6ff}
+.fb{bottom:0;border-radius:0 0 10px 10px;background:linear-gradient(180deg,#263b4e,#1b2c3d);transform-origin:center top;z-index:2;transform:rotateX(90deg)}
+.fb .panel-txt{top:-60px;color:#d7e5f5}
+
+.shade{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:inherit;opacity:0;background:rgba(6,12,24,.55)}
+.divider{position:absolute;left:0;top:calc(50% - 1px);width:100%;height:2px;background:#102030;z-index:10;pointer-events:none;box-shadow:0 1px 4px rgba(0,0,0,.6)}
+
+@keyframes ftAnim{from{transform:rotateX(0deg)}to{transform:rotateX(-90deg)}}
+@keyframes fbAnim{from{transform:rotateX(90deg)}to{transform:rotateX(0deg)}}
+@keyframes shadeIn{from{opacity:0}to{opacity:1}}
+@keyframes shadeOut{from{opacity:1}to{opacity:0}}
+
+@media(max-width:540px){
+  .flip-unit{width:84px;height:96px}
+  .panel{height:48px}
+  .panel-txt{height:96px;font-size:3.5rem;letter-spacing:-3px}
+  .sb .panel-txt,.fb .panel-txt{top:-48px}
+  .separator{font-size:2rem;line-height:96px;padding-bottom:14px}
+}
